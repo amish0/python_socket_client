@@ -1,0 +1,5 @@
+server:
+  ip: 192.168.0.104 # Hostname or IP address of your server
+  port: 12345  # Port on which your server is running
+  secure: false  # Set to true if using WSS (WebSocket Secure)
+  # Add additional WebSocket client configurations if needed

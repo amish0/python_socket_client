@@ -1,6 +1,7 @@
 import socket
 import time
 import threading
+from config_reader import config_parm
 
 # Create a socket client class
 
@@ -49,7 +50,10 @@ class SockerClient:
         print("Connection closed")
 
 # Create a client object
-client = SockerClient("192.168.0.104", 12345)
+if __name__ == "__main__":
+    ip = config_parm.get_config()["server"]["ip"]
+    port = config_parm.get_config()["server"]["port"]
+    client = SockerClient(ip, port)
 
-# Run the client
-client.run()
+    # Run the client
+    client.run()

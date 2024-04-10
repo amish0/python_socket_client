@@ -49,7 +49,7 @@ class SockerServer:
 
     def run(self):
         self.start()
-        while True:
+        while self.conection_status:
             if not self.client_status:
                 self.accept()
             try:
@@ -57,7 +57,7 @@ class SockerServer:
                 if data == "exit":
                     # close the connection with the client
                     self.client_socket.close()
-                    print("Connection closed")
+                    print("client disconnected")
                     self.client_socket = None
                     self.client_address = None
                     self.client_status = False
@@ -66,7 +66,7 @@ class SockerServer:
                     self.send("Received")
             except:
                 self.client_socket.close()
-                print("Connection closed")
+                print("client disconnected")
                 self.client_socket = None
                 self.client_address = None
                 self.client_status = False
